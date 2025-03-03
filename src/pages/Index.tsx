@@ -1,12 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Experience from "@/components/Experience";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import { useEffect } from "react";
 
 const Index = () => {
+  // Reveal animations on scroll
+  useEffect(() => {
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden-element');
+    hiddenElements.forEach(el => observer.observe(el));
+
+    return () => {
+      hiddenElements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

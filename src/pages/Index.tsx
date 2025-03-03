@@ -37,16 +37,22 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
+      {/* Background Pattern */}
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

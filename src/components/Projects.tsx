@@ -1,74 +1,71 @@
 
-import { ArrowUpRight, Github, Link as LinkIcon } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
       title: 'Immersive Product Experience',
-      period: 'January 2023',
-      description: '3D interactive product showcase with WebGL and Three.js. Users can explore the product from all angles with custom lighting and materials. Optimized for performance across devices.',
-      technologies: ['Three.js', 'WebGL', 'GSAP', 'JavaScript', 'React'],
+      description: '3D interactive product showcase with WebGL and Three.js. Users can explore the product from all angles with custom lighting and materials.',
+      technologies: ['Three.js', 'WebGL', 'GSAP', 'JavaScript'],
+      link: '#',
       image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80&w=800&h=450'
     },
     {
       title: 'Portfolio for Digital Artist',
-      period: 'October 2022',
-      description: 'Custom-designed portfolio with advanced animations and transitions. Features a unique navigation system and interactive gallery. Responsive design with focus on showcasing visual work.',
-      technologies: ['React', 'Framer Motion', 'TailwindCSS', 'Canvas API'],
+      description: 'Custom-designed portfolio with advanced animations and transitions. Features a unique navigation system and interactive gallery.',
+      technologies: ['React', 'Framer Motion', 'TailwindCSS'],
+      link: '#',
       image: 'https://images.unsplash.com/photo-1478476868527-002ae3f3e159?auto=format&fit=crop&q=80&w=800&h=450'
     },
     {
       title: 'Interactive Data Visualization',
-      period: 'June 2022',
-      description: 'Created an engaging data visualization project that transforms complex statistics into an interactive storytelling experience. Users can explore different data sets through intuitive controls and animated transitions.',
-      technologies: ['D3.js', 'SVG Animation', 'React', 'TypeScript'],
+      description: 'Created an engaging data visualization project that transforms complex statistics into an interactive storytelling experience.',
+      technologies: ['D3.js', 'SVG Animation', 'React'],
+      link: '#',
       image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800&h=450'
     }
   ];
 
   return (
-    <section id="projects" className="py-24 bg-secondary/50">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-24 bg-background">
+      <div className="container mx-auto px-6 max-w-5xl">
         <h2 className="section-heading">Selected Projects</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="mt-16 space-y-24">
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="animate-fade-in opacity-0 card-hover"
+              className="flex flex-col md:flex-row gap-8 md:gap-12 animate-fade-in opacity-0"
               style={{ animationDelay: `${0.2 * index}s`, animationFillMode: 'forwards' }}
             >
-              <div className="bg-white rounded-xl overflow-hidden shadow-md h-full flex flex-col">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    loading="lazy"
-                  />
+              <div className="w-full md:w-1/2 h-64 md:h-80 rounded-lg overflow-hidden bg-muted">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h3 className="text-xl md:text-2xl font-bold mb-4">{project.title}</h3>
+                <p className="text-foreground/70 mb-6">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, i) => (
+                    <span key={i} className="text-sm text-foreground/60 bg-muted px-3 py-1 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
                 
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-bold">{project.title}</h3>
-                  </div>
-                  
-                  <p className="text-xs text-muted-foreground mb-3">{project.period}</p>
-                  <p className="text-foreground/80 text-sm mb-4 flex-grow">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.slice(0, 4).map((tech, i) => (
-                      <span key={i} className="skill-chip">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="skill-chip">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-                </div>
+                <a 
+                  href={project.link} 
+                  className="flex items-center text-primary font-medium group w-fit"
+                >
+                  <span>View Project</span>
+                  <ArrowUpRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
             </div>
           ))}

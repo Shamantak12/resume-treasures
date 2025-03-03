@@ -7,44 +7,35 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 210 40% 2%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 2%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 2%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 40% 2%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 210 30% 40%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 210 40% 2%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 210 40% 90%;
+    --border: 240 5.9% 90%;
     --input: 214.3 31.8% 91.4%;
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -59,28 +50,17 @@
   }
 }
 
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-}
-
-.nav-link {
-  @apply relative text-foreground/70 transition-colors hover:text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full;
-}
-
-.section-heading {
-  @apply relative mb-8 inline-block text-3xl font-bold after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-12 after:bg-primary after:content-[''];
-}
-
-.timeline-item {
-  @apply relative border-l-2 border-primary/30 pl-6 pb-10 before:absolute before:left-[-0.4rem] before:top-0 before:h-3 before:w-3 before:rounded-full before:bg-primary before:content-[''];
-}
-
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Scrollbar styling */
+/* Section heading styles */
+.section-heading {
+  @apply text-3xl font-bold mb-2 inline-block;
+}
+
+/* Simplified scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -98,40 +78,18 @@ html {
   background: hsl(var(--muted-foreground) / 0.5);
 }
 
-/* Image loading effect */
-.image-loading {
-  @apply relative overflow-hidden bg-muted;
-}
-
-.image-loading::after {
-  content: "";
-  @apply absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent;
-}
-
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Project card hover effect */
-.project-card {
-  @apply relative overflow-hidden rounded-xl transition-all duration-500;
-}
-
-.project-card-content {
-  @apply absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 transition-all duration-300;
-}
-
-.project-card:hover .project-card-content {
-  @apply opacity-100;
-}
-
-.project-card:hover {
-  @apply shadow-2xl;
-}
-
-/* Skill chip styling */
-.skill-chip {
-  @apply rounded-full bg-secondary px-4 py-1.5 text-sm font-medium transition-all hover:bg-primary/10;
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
 }

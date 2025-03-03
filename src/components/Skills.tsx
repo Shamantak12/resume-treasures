@@ -2,16 +2,16 @@
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Languages',
-      skills: ['Python', 'SQL', 'Java', 'JavaScript']
+      title: 'Development',
+      skills: ['HTML/CSS', 'JavaScript', 'React', 'Three.js', 'WebGL']
     },
     {
-      title: 'Frameworks',
-      skills: ['React.js', 'Angular', 'Express', 'Node.js', 'Next.js']
+      title: 'Design',
+      skills: ['UI/UX Design', 'Motion Design', 'Interaction Design', 'Prototyping']
     },
     {
       title: 'Tools & Technologies',
-      skills: ['Power BI', 'MySQL', 'SQLite', 'Git', 'REST API', 'MongoDB', 'PostgreSQL', 'Docker']
+      skills: ['Figma', 'Adobe Creative Suite', 'GSAP', 'Framer Motion', 'Blender']
     }
   ];
 

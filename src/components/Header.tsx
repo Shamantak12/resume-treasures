@@ -36,7 +36,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="text-xl font-display font-bold">
-          Shamantak Nayak
+          Charles Bruyerre
         </a>
         
         {/* Desktop Navigation */}

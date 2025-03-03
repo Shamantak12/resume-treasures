@@ -4,34 +4,34 @@ import { Calendar, GraduationCap, MapPin } from 'lucide-react';
 const Education = () => {
   const education = [
     {
-      institution: 'Visvesvaraya Technological University',
-      degree: 'B.E. in Artificial Intelligence And Data Science',
-      location: 'India',
-      period: 'Dec 2021 - May 2025'
+      institution: 'Design & Interactive Media Institute',
+      degree: 'Master\'s in Interactive Design',
+      location: 'Paris, France',
+      period: '2015 - 2017'
     },
     {
-      institution: 'Poornaprajna PU College',
-      degree: 'PCMB',
-      location: 'Udupi, India',
-      period: '2019 - 2021'
+      institution: 'University of Digital Arts',
+      degree: 'Bachelor\'s in Computer Science & Visual Design',
+      location: 'Lyon, France',
+      period: '2012 - 2015'
     }
   ];
 
   const achievements = [
-    'Won Anveshana Hackathon, which was conducted at intercollege level by competing against 16 teams.',
-    'Grown my Graphic Company from 0 to 200000 revenue in a span of 3 months through organic marketing.'
+    'Awwwards Site of the Day for "Harmonic Exploration" interactive experience',
+    'Speaker at Frontend Development Conference on "The Future of Creative Coding"'
   ];
 
   return (
     <section id="education" className="py-24 bg-secondary/50">
       <div className="container mx-auto px-6">
-        <h2 className="section-heading">Education & Achievements</h2>
+        <h2 className="section-heading">Education & Recognition</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16">
           <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             <h3 className="text-xl font-bold mb-8 flex items-center">
               <GraduationCap className="h-5 w-5 mr-2" />
-              Education Background
+              Education
             </h3>
             
             <div className="space-y-8">
@@ -62,7 +62,7 @@ const Education = () => {
                 <path d="M12 1v6m0 0l-4-4m4 4l4-4"></path>
                 <path d="M21 12a9 9 0 1 1-9-9"></path>
               </svg>
-              Achievements & Extracurriculars
+              Awards & Recognition
             </h3>
             
             <div className="bg-white rounded-xl p-6 border border-border shadow-sm h-full card-hover">

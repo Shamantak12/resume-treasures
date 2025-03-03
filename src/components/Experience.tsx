@@ -4,35 +4,33 @@ import { Briefcase, Calendar } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      role: 'Jr. Full Stack Developer',
-      company: 'UNIVISUAL CREATIVES',
-      period: 'Oct 2024 - Present',
+      role: 'Senior Creative Developer',
+      company: 'Digital Studio',
+      period: 'Jan 2022 - Present',
       description: [
-        'Increased Clients website speed by 40% by optimizing the code quality',
-        'Accelerated Real time data fetching from the client server by using Fast API with limited functionality',
-        'Assisted In Designing of the Web by using different framework'
+        'Lead developer on interactive web experiences for major brands',
+        'Specialized in 3D web animations and immersive experiences using Three.js',
+        'Mentored junior developers on creative coding techniques'
       ]
     },
     {
-      role: 'Web Developer Intern',
-      company: 'Oasis Infobyte',
-      period: 'Sep 2023 - Oct 2023',
-      link: 'LINK',
+      role: 'Creative Developer',
+      company: 'Interactive Agency',
+      period: 'Mar 2019 - Dec 2021',
       description: [
-        'Led a transformative Capstone project to develop and deploy a cutting-edge food delivery application for company use',
-        'Utilized diverse technologies and API integrations to cater to the existing customer base, enhancing user experience and expanding service capabilities',
-        'Strategically implemented an upgraded payment gateway to streamline transactions and improve customer satisfaction'
+        'Developed award-winning interactive websites with focus on performance and animation',
+        'Collaborated with designers to implement complex UI interactions',
+        'Created custom WebGL shaders for unique visual effects'
       ]
     },
     {
-      role: 'Machine Learning Intern',
-      company: 'Varcons Technologies',
-      period: 'Oct 2023 - Dec 2023',
-      link: 'LINK',
+      role: 'Frontend Developer',
+      company: 'Tech Startup',
+      period: 'Jun 2017 - Feb 2019',
       description: [
-        'Developed and implemented Machine Learning algorithms for predicting the risks of chronic diseases',
-        'Designed and trained a Machine Learning model to analyze relevant data and make predictions',
-        'Worked closely with senior developers to learn best practices in Model development and code optimization'
+        'Built responsive web applications using React and modern JavaScript',
+        'Implemented animation systems for enhanced user experience',
+        'Worked in an agile environment with rapid iteration cycles'
       ]
     }
   ];
@@ -52,16 +50,6 @@ const Experience = () => {
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mb-3">
                 <h3 className="text-xl font-bold">
                   {exp.role} | {exp.company}
-                  {exp.link && (
-                    <a 
-                      href={exp.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="ml-2 text-primary hover:underline text-sm font-normal"
-                    >
-                      View
-                    </a>
-                  )}
                 </h3>
                 
                 <div className="flex items-center text-muted-foreground">

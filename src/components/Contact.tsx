@@ -1,31 +1,31 @@
 
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+import { Mail, Linkedin, Github, Globe } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
     { 
       icon: <Mail className="h-5 w-5" />, 
       label: 'Email', 
-      value: 'shamantakanayak@gmail.com',
-      link: 'mailto:shamantakanayak@gmail.com'
+      value: 'hello@charlesbruyerre.com',
+      link: 'mailto:hello@charlesbruyerre.com'
     },
     { 
-      icon: <Phone className="h-5 w-5" />, 
-      label: 'Phone', 
-      value: '+91 8618188953',
-      link: 'tel:+918618188953'
+      icon: <Globe className="h-5 w-5" />, 
+      label: 'Website', 
+      value: 'charlesbruyerre.com',
+      link: 'https://charlesbruyerre.com'
     },
     { 
       icon: <Linkedin className="h-5 w-5" />, 
       label: 'LinkedIn', 
-      value: 'shamant-nayak-8052b0217',
-      link: 'https://www.linkedin.com/in/shamant-nayak-8052b0217/'
+      value: 'charles-bruyerre',
+      link: 'https://www.linkedin.com/in/charles-bruyerre/'
     },
     { 
       icon: <Github className="h-5 w-5" />, 
       label: 'GitHub', 
-      value: 'Shamantak12',
-      link: 'https://github.com/Shamantak12'
+      value: 'cbruyerre',
+      link: 'https://github.com/cbruyerre'
     }
   ];
 
@@ -63,16 +63,16 @@ const Contact = () => {
           
           <div className="mt-16 text-center">
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-              Looking for a passionate developer for your next project? 
-              Feel free to get in touch and I'll get back to you as soon as possible.
+              Interested in working together? I'm always open to discussing new projects
+              and creative collaborations.
             </p>
             
             <div className="mt-8">
               <a 
-                href="mailto:shamantakanayak@gmail.com"
+                href="mailto:hello@charlesbruyerre.com"
                 className="px-8 py-3 bg-primary text-white rounded-full font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-1"
               >
-                Let's Talk
+                Let's Collaborate
               </a>
             </div>
           </div>

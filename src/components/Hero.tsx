@@ -17,7 +17,7 @@ const Hero = () => {
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl">
               <img 
                 src="/lovable-uploads/277516c8-63e7-42a6-975e-786add466169.png" 
-                alt="Shamantak A Nayak" 
+                alt="Charles Bruyerre" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
@@ -27,18 +27,18 @@ const Hero = () => {
           {/* Text Content */}
           <div className="w-full md:w-2/3 text-center md:text-left">
             <div className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-              <p className="text-primary mb-4 font-medium tracking-wide">Full Stack Developer & ML Enthusiast</p>
+              <p className="text-primary mb-4 font-medium tracking-wide">Creative Developer</p>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 animate-fade-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-              Shamantak A Nayak
+              Charles Bruyerre
             </h1>
             
             <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
               <p className="text-lg md:text-xl text-foreground/80 mb-8 leading-relaxed max-w-3xl">
-                A passionate Jr. Full Stack Developer with experience in web development and 
-                machine learning. Specializing in creating efficient, user-friendly applications 
-                and exploring the frontiers of AI technology.
+                I'm a creative developer with a passion for building beautiful, 
+                interactive experiences on the web. I combine code and design 
+                to create engaging digital products.
               </p>
             </div>
             

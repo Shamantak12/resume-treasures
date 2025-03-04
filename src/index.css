@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,44 +8,35 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 210 40% 2%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 40% 2%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 2%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 267 100% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 40% 2%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 210 30% 40%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 210 40% 2%;
+    --accent: 267 100% 60%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 210 40% 90%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 215 20.2% 65.1%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 267 100% 60%;
 
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -55,24 +47,13 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
 
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-}
-
-.nav-link {
-  @apply relative text-foreground/70 transition-colors hover:text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full;
-}
-
-.section-heading {
-  @apply relative mb-8 inline-block text-3xl font-bold after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-12 after:bg-primary after:content-[''];
-}
-
-.timeline-item {
-  @apply relative border-l-2 border-primary/30 pl-6 pb-10 before:absolute before:left-[-0.4rem] before:top-0 before:h-3 before:w-3 before:rounded-full before:bg-primary before:content-[''];
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
 /* Smooth scroll behavior */
@@ -86,52 +67,30 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0E0E0E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: rgba(139, 92, 246, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  background: rgba(139, 92, 246, 0.7);
 }
 
-/* Image loading effect */
-.image-loading {
-  @apply relative overflow-hidden bg-muted;
+/* Animation for skill bars */
+@keyframes growWidth {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
-.image-loading::after {
-  content: "";
-  @apply absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent;
+/* Add this for initial hidden elements */
+.hidden-element {
+  opacity: 0;
 }
 
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Project card hover effect */
-.project-card {
-  @apply relative overflow-hidden rounded-xl transition-all duration-500;
-}
-
-.project-card-content {
-  @apply absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 transition-all duration-300;
-}
-
-.project-card:hover .project-card-content {
-  @apply opacity-100;
-}
-
-.project-card:hover {
-  @apply shadow-2xl;
-}
-
-/* Skill chip styling */
-.skill-chip {
-  @apply rounded-full bg-secondary px-4 py-1.5 text-sm font-medium transition-all hover:bg-primary/10;
+/* Add gradient background for sections */
+.gradient-bg {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0E0E0E 100%);
 }

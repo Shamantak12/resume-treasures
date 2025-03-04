@@ -1,80 +1,108 @@
 
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
-  const contactInfo = [
-    { 
-      icon: <Mail className="h-5 w-5" />, 
-      label: 'Email', 
-      value: 'shamantakanayak@gmail.com',
-      link: 'mailto:shamantakanayak@gmail.com'
-    },
-    { 
-      icon: <Phone className="h-5 w-5" />, 
-      label: 'Phone', 
-      value: '+91 8618188953',
-      link: 'tel:+918618188953'
-    },
-    { 
-      icon: <Linkedin className="h-5 w-5" />, 
-      label: 'LinkedIn', 
-      value: 'shamant-nayak-8052b0217',
-      link: 'https://www.linkedin.com/in/shamant-nayak-8052b0217/'
-    },
-    { 
-      icon: <Github className="h-5 w-5" />, 
-      label: 'GitHub', 
-      value: 'Shamantak12',
-      link: 'https://github.com/Shamantak12'
-    }
-  ];
-
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <h2 className="section-heading">Get in Touch</h2>
+    <section id="contact" className="py-24 px-4 md:px-6 lg:px-8 bg-[#0E0E0E]">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+          <div className="w-16 h-1 bg-purple-500 mx-auto"></div>
+          <p className="text-gray-300 mt-6 max-w-2xl mx-auto">
+            Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+          </p>
+        </div>
         
-        <div className="max-w-4xl mx-auto mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {contactInfo.map((item, index) => (
-              <a
-                key={index}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="animate-fade-in opacity-0"
-                style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'forwards' }}
-              >
-                <div className="bg-white rounded-xl p-6 border border-border shadow-sm h-full card-hover">
-                  <div className="flex items-start">
-                    <div className="mr-4 p-3 bg-primary/10 rounded-full text-primary">
-                      {item.icon}
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-sm font-medium text-muted-foreground mb-1">{item.label}</h3>
-                      <p className="text-base font-semibold">{item.value}</p>
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                  <Mail className="h-5 w-5 text-purple-500" />
                 </div>
-              </a>
-            ))}
+                <div>
+                  <h4 className="text-base font-medium text-gray-300">Email</h4>
+                  <a href="mailto:shamantakanayak@gmail.com" className="text-white hover:text-purple-500 transition-colors">
+                    shamantakanayak@gmail.com
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                  <Phone className="h-5 w-5 text-purple-500" />
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-gray-300">Phone</h4>
+                  <a href="tel:+918618188953" className="text-white hover:text-purple-500 transition-colors">
+                    +91 8618188953
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                  <MapPin className="h-5 w-5 text-purple-500" />
+                </div>
+                <div>
+                  <h4 className="text-base font-medium text-gray-300">Location</h4>
+                  <p className="text-white">India</p>
+                </div>
+              </div>
+            </div>
           </div>
           
-          <div className="mt-16 text-center">
-            <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-              Looking for a passionate developer for your next project? 
-              Feel free to get in touch and I'll get back to you as soon as possible.
-            </p>
-            
-            <div className="mt-8">
-              <a 
-                href="mailto:shamantakanayak@gmail.com"
-                className="px-8 py-3 bg-primary text-white rounded-full font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-1"
-              >
-                Let's Talk
-              </a>
-            </div>
+          {/* Contact Form */}
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+            <form>
+              <div className="grid grid-cols-1 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full px-4 py-3 bg-[#1A1A1A] border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    placeholder="Your name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full px-4 py-3 bg-[#1A1A1A] border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    placeholder="Your email"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full px-4 py-3 bg-[#1A1A1A] border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white resize-none"
+                    placeholder="Your message"
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <button
+                    type="submit"
+                    className="group flex items-center justify-center gap-2 w-full px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+                  >
+                    Send Message
+                    <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

@@ -1,86 +1,90 @@
 
-import { ArrowUpRight, Github, Link as LinkIcon } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Ilava (Farmers Application Model)',
-      period: 'September 2024 - Present',
-      description: 'Ilava is an application made to get the information about the soil content like nitrogen, phosphorous, etc. The platform uses a Stable Diffusion Model for image-based predictions and machine learning models for crop water consumption forecasting. Selected for the FAER Funding Programme.',
-      technologies: ['HTML', 'Tailwind', 'JavaScript', 'Python', 'Stable Diffusion', 'Machine Learning', 'PostgreSQL'],
-      link: 'LINK',
-      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80&w=800&h=450'
+      title: 'Ilava - Farmers Application',
+      description: 'An application to analyze soil content using Stable Diffusion Model and ML for crop water consumption forecasting. Selected for the FAER Funding Programme.',
+      technologies: ['React', 'Python', 'Stable Diffusion', 'PostgreSQL'],
+      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80&w=800&h=450',
+      github: '#',
+      demo: '#'
     },
     {
       title: 'Autism Spectrum Disorder',
-      period: 'May 2024 - August 2024',
-      description: 'Managed the development of SVM and Logistic Regression models to predict Autism Spectrum Disorder, achieving a high accuracy rate and surpassing industry benchmarks by pre-processing data. Enhanced early detection outcomes by improving diagnostic accuracy, positively impacting the timely intervention for individuals with ASD.',
-      technologies: ['Python', 'SVM', 'Logistic Regression', 'Pandas', 'Streamlit', 'Seaborn', 'Machine Learning'],
-      link: 'LINK',
-      image: 'https://images.unsplash.com/photo-1478476868527-002ae3f3e159?auto=format&fit=crop&q=80&w=800&h=450'
+      description: 'Developed SVM and Logistic Regression models to predict Autism Spectrum Disorder with high accuracy, enhancing early detection outcomes.',
+      technologies: ['Python', 'Machine Learning', 'Streamlit', 'Pandas'],
+      image: 'https://images.unsplash.com/photo-1478476868527-002ae3f3e159?auto=format&fit=crop&q=80&w=800&h=450',
+      github: '#',
+      demo: '#'
     },
     {
-      title: 'Vitara (Social Media Application)',
-      period: 'Oct 2023 - Dec 2023',
-      description: 'Built with Next.js, the application offers an intuitive and engaging user interface that makes it easy for family members to interact and connect. By utilizing the Gale-Shapley algorithm, Vitara helps family members connect with one another based on mutual trust and shared interests. Developed using Node.js and a REST API, ensuring seamless communication between the client and server.',
-      technologies: ['Next.js', 'Node.js', 'REST API', 'MongoDB', 'Machine Learning'],
-      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800&h=450'
-    }
+      title: 'Vitara - Social Media App',
+      description: 'A social media platform built with Next.js, featuring the Gale-Shapley algorithm to connect family members based on mutual trust and interests.',
+      technologies: ['Next.js', 'Node.js', 'MongoDB', 'REST API'],
+      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800&h=450',
+      github: '#',
+      demo: '#'
+    },
   ];
 
   return (
-    <section id="projects" className="py-24 bg-secondary/50">
-      <div className="container mx-auto px-6">
-        <h2 className="section-heading">Projects</h2>
+    <section id="projects" className="py-24 px-4 md:px-6 lg:px-8 bg-[#111111]">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <div className="w-16 h-1 bg-purple-500 mx-auto"></div>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 gap-16">
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="animate-fade-in opacity-0 card-hover"
-              style={{ animationDelay: `${0.2 * index}s`, animationFillMode: 'forwards' }}
+              className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 animate-fade-in opacity-0`}
+              style={{ animationDelay: `${0.3 * index}s`, animationFillMode: 'forwards' }}
             >
-              <div className="bg-white rounded-xl overflow-hidden shadow-md h-full flex flex-col">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    loading="lazy"
-                  />
+              {/* Project Image */}
+              <div className="w-full md:w-1/2 overflow-hidden rounded-lg">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-auto object-cover transform transition duration-500 hover:scale-105"
+                />
+              </div>
+              
+              {/* Project Info */}
+              <div className="w-full md:w-1/2 md:px-4">
+                <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
+                <p className="text-gray-300 mb-6">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, i) => (
+                    <span key={i} className="px-3 py-1 text-xs bg-gray-800 text-purple-400 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
                 
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-bold">{project.title}</h3>
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-primary/80 transition-colors"
-                        aria-label={`Visit ${project.title} project`}
-                      >
-                        <ArrowUpRight className="h-5 w-5" />
-                      </a>
-                    )}
-                  </div>
-                  
-                  <p className="text-xs text-muted-foreground mb-3">{project.period}</p>
-                  <p className="text-foreground/80 text-sm mb-4 flex-grow">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.slice(0, 4).map((tech, i) => (
-                      <span key={i} className="skill-chip">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="skill-chip">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
+                <div className="flex gap-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-white hover:text-purple-500 transition-colors"
+                  >
+                    <Github size={18} />
+                    <span>Code</span>
+                  </a>
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-white hover:text-purple-500 transition-colors"
+                  >
+                    <ExternalLink size={18} />
+                    <span>Live Demo</span>
+                  </a>
                 </div>
               </div>
             </div>

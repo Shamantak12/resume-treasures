@@ -50,23 +50,7 @@ const Header = () => {
           S<span className="text-purple-500">.</span>
         </a>
         
-        {/* Desktop Navigation - Hidden when menu is open */}
-        <nav className={cn(
-          "hidden md:flex items-center space-x-8",
-          mobileMenuOpen && "md:hidden" // Hide desktop nav when menu is open
-        )}>
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-sm text-gray-300 hover:text-purple-500 transition-colors tracking-wider"
-            >
-              {link.name.toUpperCase()}
-            </a>
-          ))}
-        </nav>
-        
-        {/* Menu Button - Now visible on all screen sizes */}
+        {/* Menu Button - Only element in the header */}
         <button 
           className="focus:outline-none text-gray-300 relative z-50 hover:text-purple-500 transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -80,7 +64,7 @@ const Header = () => {
         </button>
       </div>
       
-      {/* Circular Navigation Menu - Now available on all screen sizes */}
+      {/* Circular Navigation Menu */}
       <div className={cn(
         "fixed inset-0 z-40 transition-opacity duration-500",
         mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none opacity-0"

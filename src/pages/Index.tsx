@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BubbleCursor from "@/components/BubbleCursor";
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +46,9 @@ const Index = () => {
     <div 
       className={`min-h-screen bg-[#0E0E0E] text-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
     >
+      {/* Bubble cursor animation */}
+      <BubbleCursor />
+      
       {/* Animated background elements */}
       <div className="fixed inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">

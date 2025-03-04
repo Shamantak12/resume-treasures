@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, User, Briefcase, Code, Mail } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,11 +29,11 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', icon: Home },
+    { name: 'About', href: '#about', icon: User },
+    { name: 'Projects', href: '#projects', icon: Code },
+    { name: 'Skills', href: '#skills', icon: Briefcase },
+    { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
   return (
@@ -77,35 +77,62 @@ const Header = () => {
         </button>
       </div>
       
-      {/* Full-screen Mobile Navigation */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-[#0E0E0E] z-40 flex flex-col items-center justify-center transition-all duration-500 ease-in-out",
-          mobileMenuOpen 
-            ? "opacity-100 pointer-events-auto" 
-            : "opacity-0 pointer-events-none"
-        )}
-      >
-        <nav className="flex flex-col items-center space-y-8">
-          {navLinks.map((link, index) => (
-            <a
-              key={link.name}
-              href={link.href}
+      {/* Circular Mobile Navigation Menu */}
+      <div className={cn(
+        "fixed inset-0 z-40 transition-opacity duration-500",
+        mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none opacity-0"
+      )}>
+        <div className={cn(
+          "absolute inset-0 bg-black/90 backdrop-blur-lg transition-opacity duration-500",
+          mobileMenuOpen ? "opacity-100" : "opacity-0"
+        )}></div>
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-64 h-64">
+            {navLinks.map((link, index) => {
+              // Calculate position in the circle
+              const angle = (index * (2 * Math.PI / navLinks.length)) - Math.PI/2;
+              const radius = 120; // Distance from center
+              const top = 50 + radius * Math.sin(angle);
+              const left = 50 + radius * Math.cos(angle);
+              
+              const Icon = link.icon;
+              
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform",
+                    mobileMenuOpen 
+                      ? "scale-100 opacity-100" 
+                      : "scale-0 opacity-0"
+                  )}
+                  style={{ 
+                    top: `${top}%`, 
+                    left: `${left}%`, 
+                    transform: `translate(-50%, -50%) ${mobileMenuOpen ? 'scale(1)' : 'scale(0)'}`,
+                    transitionDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms',
+                  }}
+                >
+                  <Icon className="h-6 w-6 mb-1" />
+                  <span className="text-xs">{link.name}</span>
+                </a>
+              );
+            })}
+            
+            {/* Center circle */}
+            <div 
               className={cn(
-                "text-3xl font-medium text-white hover:text-purple-500 transition-all transform",
-                mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                "absolute top-1/2 left-1/2 w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500",
+                mobileMenuOpen ? "scale-100" : "scale-0"
               )}
-              style={{ 
-                transitionDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms',
-                transitionProperty: 'all',
-                transitionDuration: '500ms'
-              }}
-              onClick={() => setMobileMenuOpen(false)}
             >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+              <span className="text-white font-bold text-lg">MENU</span>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

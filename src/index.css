@@ -49,10 +49,16 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Poppins', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    cursor: none; /* Hide default cursor when using custom cursor */
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Make sure links and buttons show pointer */
+  a, button, [role="button"] {
+    cursor: none; /* Keep using our custom cursor */
   }
 }
 
@@ -174,4 +180,45 @@ html {
   -webkit-background-clip: text;
   color: transparent;
   background-image: linear-gradient(90deg, #9333ea, #c084fc);
+}
+
+/* Bubble animation for cursor effects */
+@keyframes bubble-fade {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-bubble-fade {
+  animation: bubble-fade 2s ease-out forwards;
+}
+
+/* Circle menu animations */
+@keyframes circleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.circle-menu-item {
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.circle-menu-enter {
+  animation: circleExpand 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.circle-menu-exit {
+  animation: circleExpand 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275) reverse;
 }

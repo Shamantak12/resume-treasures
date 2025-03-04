@@ -94,3 +94,84 @@ html {
 .gradient-bg {
   background: linear-gradient(135deg, #1a1a1a 0%, #0E0E0E 100%);
 }
+
+/* Menu animation */
+@keyframes menuFadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menuFadeOut {
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.menu-item-enter {
+  animation: menuFadeIn 0.5s forwards;
+}
+
+.menu-item-exit {
+  animation: menuFadeOut 0.5s forwards;
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Custom hover effects */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Glowing effect for important elements */
+.glow-effect {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+}
+
+/* Text gradient effect */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #9333ea, #c084fc);
+}

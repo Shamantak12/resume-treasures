@@ -46,8 +46,8 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-wider text-white relative z-50">
-          S<span className="text-purple-500">.</span>
+        <a href="#" className="text-xl font-bold tracking-wider text-white relative z-50 hover:text-purple-400 transition-colors">
+          S<span className="text-purple-500 animate-pulse-slow">.</span>
         </a>
         
         {/* Menu Button - Only element in the header */}
@@ -57,9 +57,9 @@ const Header = () => {
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileMenuOpen ? (
-            <X className="h-6 w-6 text-white" />
+            <X className="h-6 w-6 text-white animate-scale-in" />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6 hover:rotate-12 transition-transform duration-300" />
           )}
         </button>
       </div>
@@ -91,7 +91,7 @@ const Header = () => {
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform",
+                    "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform shimmer-border",
                     mobileMenuOpen 
                       ? "scale-100 opacity-100" 
                       : "scale-0 opacity-0"
@@ -112,11 +112,11 @@ const Header = () => {
             {/* Center circle */}
             <div 
               className={cn(
-                "absolute top-1/2 left-1/2 w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500",
+                "absolute top-1/2 left-1/2 w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 shadow-lg shadow-purple-500/30",
                 mobileMenuOpen ? "scale-100" : "scale-0"
               )}
             >
-              <span className="text-white font-bold text-lg">MENU</span>
+              <span className="text-white font-bold text-lg animate-pulse-slow">MENU</span>
             </div>
           </div>
         </div>

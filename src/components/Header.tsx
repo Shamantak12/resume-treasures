@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X, Home, User, Briefcase, Code, Mail } from 'lucide-react';
+import { Menu, X, Home, User, Briefcase, Code, Mail, Building } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,11 +30,12 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Home', href: '#home', icon: Home },
-    { name: 'About', href: '#about', icon: User },
-    { name: 'Projects', href: '#projects', icon: Code },
-    { name: 'Skills', href: '#skills', icon: Briefcase },
-    { name: 'Contact', href: '#contact', icon: Mail },
+    { name: 'Home', href: '#home', icon: Home, path: '/' },
+    { name: 'About', href: '#about', icon: User, path: '/' },
+    { name: 'Projects', href: '#projects', icon: Code, path: '/' },
+    { name: 'Skills', href: '#skills', icon: Briefcase, path: '/' },
+    { name: 'Contact', href: '#contact', icon: Mail, path: '/' },
+    { name: 'Worked With', href: '', icon: Building, path: '/worked-with' },
   ];
 
   return (
@@ -46,9 +48,9 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-wider text-white relative z-50 hover:text-purple-400 transition-colors">
+        <Link to="/" className="text-xl font-bold tracking-wider text-white relative z-50 hover:text-purple-400 transition-colors">
           S<span className="text-purple-500 animate-pulse-slow">.</span>
-        </a>
+        </Link>
         
         {/* Menu Button - Only element in the header */}
         <button 
@@ -86,26 +88,49 @@ const Header = () => {
               const Icon = link.icon;
               
               return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform shimmer-border",
-                    mobileMenuOpen 
-                      ? "scale-100 opacity-100" 
-                      : "scale-0 opacity-0"
-                  )}
-                  style={{ 
-                    top: `${top}%`, 
-                    left: `${left}%`, 
-                    transform: `translate(-50%, -50%) ${mobileMenuOpen ? 'scale(1)' : 'scale(0)'}`,
-                    transitionDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms',
-                  }}
-                >
-                  <Icon className="h-6 w-6 mb-1" />
-                  <span className="text-xs">{link.name}</span>
-                </a>
+                link.path === '/' ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform shimmer-border",
+                      mobileMenuOpen 
+                        ? "scale-100 opacity-100" 
+                        : "scale-0 opacity-0"
+                    )}
+                    style={{ 
+                      top: `${top}%`, 
+                      left: `${left}%`, 
+                      transform: `translate(-50%, -50%) ${mobileMenuOpen ? 'scale(1)' : 'scale(0)'}`,
+                      transitionDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms',
+                    }}
+                  >
+                    <Icon className="h-6 w-6 mb-1" />
+                    <span className="text-xs">{link.name}</span>
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "absolute flex flex-col items-center justify-center w-20 h-20 rounded-full bg-purple-600/20 backdrop-blur-sm text-white hover:bg-purple-600 transition-all duration-500 transform shimmer-border",
+                      mobileMenuOpen 
+                        ? "scale-100 opacity-100" 
+                        : "scale-0 opacity-0"
+                    )}
+                    style={{ 
+                      top: `${top}%`, 
+                      left: `${left}%`, 
+                      transform: `translate(-50%, -50%) ${mobileMenuOpen ? 'scale(1)' : 'scale(0)'}`,
+                      transitionDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms',
+                    }}
+                  >
+                    <Icon className="h-6 w-6 mb-1" />
+                    <span className="text-xs">{link.name}</span>
+                  </Link>
+                )
               );
             })}
             

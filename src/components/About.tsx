@@ -1,9 +1,26 @@
 
-import { Brain, Database, Cpu, Code } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Brain, Database, Cpu, Code, BarChart3, PieChart, ArrowRight, Server } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const dataPoints = useRef<{ x: number, y: number, size: number, delay: number, color: string }[]>([]);
+  
+  // Generate random data points for the background visualization
+  useEffect(() => {
+    dataPoints.current = Array(20).fill(0).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: 2 + Math.random() * 8,
+      delay: Math.random() * 5,
+      color: [
+        'rgba(139, 92, 246, 0.7)', // Purple
+        'rgba(16, 185, 129, 0.7)', // Green
+        'rgba(59, 130, 246, 0.7)', // Blue
+        'rgba(236, 72, 153, 0.7)', // Pink
+      ][Math.floor(Math.random() * 4)]
+    }));
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,8 +42,52 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-24 px-4 md:px-6 lg:px-8 bg-[#111111]">
-      <div className="container mx-auto max-w-6xl">
+    <section id="about" className="py-24 px-4 md:px-6 lg:px-8 bg-[#111111] relative overflow-hidden">
+      {/* Data visualization background elements */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        {dataPoints.current.map((point, i) => (
+          <div
+            key={i}
+            className="absolute animate-pulse-slow"
+            style={{
+              top: `${point.y}%`,
+              left: `${point.x}%`,
+              width: `${point.size}px`,
+              height: `${point.size}px`,
+              backgroundColor: point.color,
+              borderRadius: '50%',
+              boxShadow: `0 0 ${point.size * 2}px ${point.color}`,
+              animationDelay: `${point.delay}s`,
+              animationDuration: '4s'
+            }}
+          ></div>
+        ))}
+        
+        {/* Data flow lines */}
+        {[...Array(15)].map((_, i) => {
+          const startY = Math.random() * 100;
+          const startX = Math.random() * 100;
+          const length = 20 + Math.random() * 40;
+          const angle = Math.random() * 360;
+          
+          return (
+            <div
+              key={`line-${i}`}
+              className="absolute opacity-20"
+              style={{
+                top: `${startY}%`,
+                left: `${startX}%`,
+                width: `${length}px`,
+                height: '1px',
+                background: 'linear-gradient(90deg, rgba(139, 92, 246, 0.8), transparent)',
+                transform: `rotate(${angle}deg)`,
+              }}
+            ></div>
+          );
+        })}
+      </div>
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
           <div className="w-full md:w-1/2 animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             <div className="relative overflow-hidden rounded-xl group">
@@ -37,7 +98,7 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/5"></div>
               
-              {/* AI/ML Animated overlay elements */}
+              {/* Data Science & ML Animated overlay elements */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute top-1/4 left-1/4 animate-float-slow" style={{ animationDelay: '0.2s' }}>
                   <Brain className="w-8 h-8 text-purple-400" />
@@ -49,7 +110,26 @@ const About = () => {
                   <Cpu className="w-8 h-8 text-green-400" />
                 </div>
                 <div className="absolute top-1/3 right-1/3 animate-float-slow" style={{ animationDelay: '1.1s' }}>
-                  <Code className="w-8 h-8 text-yellow-400" />
+                  <BarChart3 className="w-8 h-8 text-yellow-400" />
+                </div>
+                <div className="absolute bottom-1/3 right-1/4 animate-float-slow" style={{ animationDelay: '1.4s' }}>
+                  <PieChart className="w-8 h-8 text-pink-400" />
+                </div>
+                
+                {/* Data flow animation */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 opacity-30">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-px bg-gradient-to-t from-purple-500 to-transparent"
+                      style={{
+                        left: `${10 + i * 12}%`,
+                        height: `${30 + Math.random() * 40}%`,
+                        bottom: 0,
+                        animation: `growHeight 1.5s ease-out ${i * 0.2}s`
+                      }}
+                    ></div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -64,55 +144,74 @@ const About = () => {
             
             <div className="space-y-4 text-gray-300">
               <p>
-                A passionate <span className="text-purple-400 font-medium">Full Stack Developer</span> with specialized 
+                A passionate <span className="text-purple-400 font-medium">Data Scientist</span> and
+                <span className="text-blue-400 font-medium"> ML Engineer</span> with specialized 
                 expertise in <span className="text-gradient font-medium">Machine Learning</span> and 
-                <span className="text-blue-400 font-medium"> Artificial Intelligence</span>.
+                <span className="text-green-400 font-medium"> Artificial Intelligence</span>.
               </p>
               <p>
-                I'm deeply focused on the intersection of web development and AI technologies,
-                creating intelligent applications that leverage data to solve complex problems.
-                My work spans from developing predictive models to implementing 
-                neural networks for real-world applications.
+                I'm deeply focused on the intersection of <span className="text-yellow-400">data science</span> and 
+                <span className="text-purple-400"> AI technologies</span>, building intelligent systems that transform
+                raw data into predictive insights. My work spans from developing complex neural networks to
+                implementing production-ready machine learning pipelines.
               </p>
               <p>
                 With expertise in frameworks like <span className="text-yellow-400">TensorFlow</span>, 
                 <span className="text-blue-400"> PyTorch</span>, and <span className="text-green-400">scikit-learn</span>,
-                I've worked on various projects including chronic disease prediction,
-                natural language processing systems, and computer vision applications.
+                I've delivered solutions across a range of domains including computer vision, natural language processing,
+                and predictive analytics.
               </p>
               <p>
-                My goal is to build AI-driven solutions that are not just technically sound
-                but also ethically responsible and user-friendly.
+                My goal is to build AI-driven solutions that are not just technically sophisticated
+                but also ethically responsible and business-focused.
               </p>
             </div>
             
-            {/* Tech icon grid with animations */}
+            {/* ML/AI Tech icon grid with animations */}
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { icon: <Brain className="w-6 h-6" />, label: "Machine Learning" },
+                { icon: <Brain className="w-6 h-6" />, label: "Deep Learning" },
                 { icon: <Database className="w-6 h-6" />, label: "Big Data" },
                 { icon: <Cpu className="w-6 h-6" />, label: "Neural Networks" },
-                { icon: <Code className="w-6 h-6" />, label: "AI Development" }
+                { icon: <Server className="w-6 h-6" />, label: "ML Ops" }
               ].map((item, index) => (
                 <div 
                   key={index}
-                  className="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all hover:-translate-y-1 cursor-pointer shimmer-border"
+                  className="flex flex-col items-center justify-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all hover:-translate-y-1 cursor-pointer shimmer-border group"
                   style={{ animationDelay: `${0.2 * index}s` }}
                 >
-                  <div className="text-purple-500 mb-2 animate-pulse-slow">
+                  <div className="text-purple-500 mb-2 animate-pulse-slow group-hover:text-purple-400 transition-colors">
                     {item.icon}
                   </div>
                   <span className="text-sm text-center">{item.label}</span>
+                  
+                  {/* Interactive data particles on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300">
+                    {[...Array(5)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 rounded-full bg-purple-400"
+                        style={{
+                          top: `${Math.random() * 100}%`,
+                          left: `${Math.random() * 100}%`,
+                          animation: `float-slow ${3 + Math.random() * 2}s infinite`,
+                          animationDelay: `${Math.random()}s`,
+                        }}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
             
+            {/* ML Projects Link */}
             <div className="mt-8">
               <a 
-                href="#contact" 
-                className="px-8 py-4 border border-purple-500 text-purple-500 rounded-full font-medium hover:bg-purple-500/10 transition-all shimmer-border"
+                href="#projects" 
+                className="px-6 py-3 border border-purple-500 text-purple-500 rounded-full font-medium hover:bg-purple-500/10 transition-all shimmer-border group flex items-center gap-2 w-fit"
               >
-                Get In Touch
+                View AI Projects
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>

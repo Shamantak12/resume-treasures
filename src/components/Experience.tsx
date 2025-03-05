@@ -38,46 +38,51 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-white">
+    <section id="experience" className="py-12 bg-[#0E0E0E]">
       <div className="container mx-auto px-6">
-        <h2 className="section-heading">Work Experience</h2>
-        
-        <div className="mt-16">
+        <div className="grid grid-cols-1 gap-12">
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className="timeline-item animate-fade-in opacity-0"
-              style={{ animationDelay: `${0.2 * index}s`, animationFillMode: 'forwards' }}
+              className="bg-[#161616] border border-purple-900/20 rounded-lg p-6 shadow-lg shadow-purple-500/5 hover:shadow-purple-500/10 transition-all duration-300 hidden-element"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mb-3">
-                <h3 className="text-xl font-bold">
-                  {exp.role} | {exp.company}
-                  {exp.link && (
-                    <a 
-                      href={exp.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="ml-2 text-primary hover:underline text-sm font-normal"
-                    >
-                      View
-                    </a>
-                  )}
-                </h3>
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <div className="mb-3 md:mb-0">
+                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 flex items-center">
+                    <Briefcase className="h-5 w-5 mr-2 text-purple-500" />
+                    {exp.role}
+                  </h3>
+                  <p className="text-lg text-purple-300 font-medium">{exp.company}</p>
+                </div>
                 
-                <div className="flex items-center text-muted-foreground">
-                  <Calendar className="h-4 w-4 mr-1" />
+                <div className="flex items-center text-gray-400 bg-[#1A1A1A] px-3 py-1 rounded-full">
+                  <Calendar className="h-4 w-4 mr-2 text-purple-500" />
                   <span className="text-sm">{exp.period}</span>
                 </div>
               </div>
               
-              <ul className="space-y-2 text-foreground/80">
+              <ul className="space-y-3 text-gray-300 mt-4">
                 {exp.description.map((item, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/70 mt-2 mr-2"></span>
-                    <span>{item}</span>
+                  <li key={i} className="flex items-start group">
+                    <span className="inline-block h-2 w-2 rounded-full bg-purple-500 mt-2 mr-3 group-hover:bg-purple-400 transition-colors"></span>
+                    <span className="group-hover:text-white transition-colors">{item}</span>
                   </li>
                 ))}
               </ul>
+              
+              {exp.link && (
+                <a 
+                  href={exp.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
+                >
+                  <span className="text-sm font-medium">View project</span>
+                  <svg className="ml-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              )}
             </div>
           ))}
         </div>

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import BubbleCursor from "./components/BubbleCursor";
 import WorkedWith from "./components/WorkedWith";
+import ExperiencePage from "./pages/ExperiencePage";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/worked-with" element={<WorkedWith />} />
+          <Route path="/experience" element={<ExperiencePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
